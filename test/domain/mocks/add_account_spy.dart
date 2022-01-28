@@ -1,6 +1,6 @@
 import 'package:mocktail/mocktail.dart';
 
-import 'package:fordev/domain/domain.dart';
+import 'package:surveys/domain/domain.dart';
 
 class AddAccountSpy extends Mock implements AddAccount {
   When mockAddAccountCall() => when(() => this.add(any()));

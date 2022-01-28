@@ -1,7 +1,7 @@
 import 'package:test/test.dart';
 
-import 'package:fordev/presentation/protocols/protocols.dart';
-import 'package:fordev/validation/validators/validators.dart';
+import 'package:surveys/presentation/protocols/protocols.dart';
+import 'package:surveys/validation/validators/validators.dart';
 
 void main() {
   late EmailValidation sut;

@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:fordev/presentation/mixins/mixins.dart';
-import 'package:fordev/ui/pages/pages.dart';
+import 'package:surveys/presentation/mixins/mixins.dart';
+import 'package:surveys/ui/pages/pages.dart';
 
 class SplashPresenterSpy extends Mock implements SplashPresenter {
   final navigateToController = StreamController<NavigationState?>();

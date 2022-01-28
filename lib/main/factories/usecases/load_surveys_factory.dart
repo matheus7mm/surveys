@@ -1,4 +1,4 @@
-import 'package:fordev/main/composites/composites.dart';
+import 'package:surveys/main/composites/composites.dart';
 
 import './../../../data/usecases/usecases.dart';
 import './../../../domain/domain.dart';

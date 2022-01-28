@@ -1,6 +1,6 @@
 import 'package:mocktail/mocktail.dart';
 
-import 'package:fordev/domain/domain.dart';
+import 'package:surveys/domain/domain.dart';
 
 class LoadSurveyResultSpy extends Mock implements LoadSurveyResult {
   When mockLoadBySurveyCall() =>

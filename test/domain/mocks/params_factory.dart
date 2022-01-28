@@ -1,5 +1,5 @@
 import 'package:faker/faker.dart';
-import 'package:fordev/domain/domain.dart';
+import 'package:surveys/domain/domain.dart';
 
 class ParamsFactory {
   static AddAccountParams makeAddAccount() => AddAccountParams(

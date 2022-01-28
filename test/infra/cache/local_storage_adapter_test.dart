@@ -1,7 +1,7 @@
 import 'package:faker/faker.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
-import 'package:fordev/infra/cache/cache.dart';
+import 'package:surveys/infra/cache/cache.dart';
 
 import './../mocks/mocks.dart';
 

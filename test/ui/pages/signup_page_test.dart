@@ -2,10 +2,10 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fordev/presentation/mixins/navigation_manager.dart';
+import 'package:surveys/presentation/mixins/navigation_manager.dart';
 
-import 'package:fordev/ui/helpers/helpers.dart';
-import 'package:fordev/ui/pages/pages.dart';
+import 'package:surveys/ui/helpers/helpers.dart';
+import 'package:surveys/ui/pages/pages.dart';
 import 'package:mocktail/mocktail.dart';
 
 import './../helpers/helpers.dart';

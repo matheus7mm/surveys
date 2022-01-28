@@ -2,8 +2,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:fordev/presentation/mixins/navigation_manager.dart';
-import 'package:fordev/ui/pages/splash/splash.dart';
+import 'package:surveys/presentation/mixins/navigation_manager.dart';
+import 'package:surveys/ui/pages/splash/splash.dart';
 
 import './../helpers/helpers.dart';
 import './../mocks/mocks.dart';

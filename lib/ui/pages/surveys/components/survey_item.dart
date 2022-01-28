@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fordev/ui/pages/pages.dart';
+import 'package:surveys/ui/pages/pages.dart';
 import 'package:provider/provider.dart';
 
 class SurveyItem extends StatelessWidget {

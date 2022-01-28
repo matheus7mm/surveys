@@ -2,10 +2,10 @@ import 'package:faker/faker.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
-import 'package:fordev/presentation/presenters/presenters.dart';
-import 'package:fordev/domain/domain.dart';
-import 'package:fordev/ui/helpers/helpers.dart';
-import 'package:fordev/ui/pages/pages.dart';
+import 'package:surveys/presentation/presenters/presenters.dart';
+import 'package:surveys/domain/domain.dart';
+import 'package:surveys/ui/helpers/helpers.dart';
+import 'package:surveys/ui/pages/pages.dart';
 
 import './../../domain/mocks/mocks.dart';
 

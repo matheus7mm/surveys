@@ -1,6 +1,6 @@
 import 'package:mocktail/mocktail.dart';
 
-import 'package:fordev/domain/domain.dart';
+import 'package:surveys/domain/domain.dart';
 
 class AuthenticationSpy extends Mock implements Authentication {
   When mockAuthenticationCall() => when(() => this.auth(any()));

@@ -1,7 +1,7 @@
 import 'package:test/test.dart';
 
-import 'package:fordev/presentation/protocols/protocols.dart';
-import 'package:fordev/main/composites/composites.dart';
+import 'package:surveys/presentation/protocols/protocols.dart';
+import 'package:surveys/main/composites/composites.dart';
 
 import './../../validation/mocks/mocks.dart';
 

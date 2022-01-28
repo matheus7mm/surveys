@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fordev/ui/helpers/i18n/resources.dart';
+import 'package:surveys/ui/helpers/i18n/resources.dart';
 import 'package:provider/provider.dart';
 
 import '../signup_presenter.dart';

@@ -1,6 +1,6 @@
 import 'package:mocktail/mocktail.dart';
 
-import 'package:fordev/domain/domain.dart';
+import 'package:surveys/domain/domain.dart';
 
 class SaveSurveyResultSpy extends Mock implements SaveSurveyResult {
   When mockSaveCall() => when(() => this.save(answer: any(named: 'answer')));

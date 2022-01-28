@@ -2,8 +2,8 @@ import 'package:test/test.dart';
 import 'package:faker/faker.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:fordev/data/http/http.dart';
-import 'package:fordev/main/decorators/decorators.dart';
+import 'package:surveys/data/http/http.dart';
+import 'package:surveys/main/decorators/decorators.dart';
 
 import './../../data/mocks/mocks.dart';
 

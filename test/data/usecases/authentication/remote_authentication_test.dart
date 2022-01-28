@@ -2,11 +2,11 @@ import 'package:faker/faker.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
-import 'package:fordev/domain/helpers/helpers.dart';
-import 'package:fordev/domain/usecases/usecases.dart';
+import 'package:surveys/domain/helpers/helpers.dart';
+import 'package:surveys/domain/usecases/usecases.dart';
 
-import 'package:fordev/data/http/http.dart';
-import 'package:fordev/data/usecases/usecases.dart';
+import 'package:surveys/data/http/http.dart';
+import 'package:surveys/data/usecases/usecases.dart';
 
 import './../../../infra/mocks/mocks.dart';
 import './../../../domain/mocks/mocks.dart';

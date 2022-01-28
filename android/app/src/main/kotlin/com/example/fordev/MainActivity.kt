@@ -1,4 +1,4 @@
-package com.example.fordev
+package com.example.surveys
 
 import io.flutter.embedding.android.FlutterActivity
 

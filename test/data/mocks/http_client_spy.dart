@@ -1,6 +1,6 @@
 import 'package:mocktail/mocktail.dart';
 
-import 'package:fordev/data/http/http.dart';
+import 'package:surveys/data/http/http.dart';
 
 class HttpClientSpy extends Mock implements HttpClient {
   When mockRequestCall() => when(

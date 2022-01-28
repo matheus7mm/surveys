@@ -1,7 +1,7 @@
 import 'package:mocktail/mocktail.dart';
 
-import 'package:fordev/data/usecases/usecases.dart';
-import 'package:fordev/domain/domain.dart';
+import 'package:surveys/data/usecases/usecases.dart';
+import 'package:surveys/domain/domain.dart';
 
 class LocalLoadSurveysSpy extends Mock implements LocalLoadSurveys {
   LocalLoadSurveysSpy() {

@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:mocktail/mocktail.dart';
-import 'package:fordev/ui/pages/pages.dart';
+import 'package:surveys/ui/pages/pages.dart';
 
 class SurveyResultPresenterSpy extends Mock implements SurveyResultPresenter {
   final surveyResultController = StreamController<SurveyResultViewModel?>();

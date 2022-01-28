@@ -3,9 +3,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:network_image_mock/network_image_mock.dart';
 
-import 'package:fordev/ui/helpers/helpers.dart';
-import 'package:fordev/ui/pages/survey_result/components/components.dart';
-import 'package:fordev/ui/pages/pages.dart';
+import 'package:surveys/ui/helpers/helpers.dart';
+import 'package:surveys/ui/pages/survey_result/components/components.dart';
+import 'package:surveys/ui/pages/pages.dart';
 
 import '../mocks/mocks.dart';
 import './../helpers/helpers.dart';

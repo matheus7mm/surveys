@@ -2,9 +2,9 @@ import 'package:faker/faker.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
-import 'package:fordev/data/http/http.dart';
+import 'package:surveys/data/http/http.dart';
 
-import 'package:fordev/infra/http/http.dart';
+import 'package:surveys/infra/http/http.dart';
 
 import './../mocks/mocks.dart';
 

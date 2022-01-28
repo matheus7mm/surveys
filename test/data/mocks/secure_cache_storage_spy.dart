@@ -1,5 +1,5 @@
 import 'package:mocktail/mocktail.dart';
-import 'package:fordev/data/cache/cache.dart';
+import 'package:surveys/data/cache/cache.dart';
 
 class SecureCacheStorageSpy extends Mock
     implements

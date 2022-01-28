@@ -2,10 +2,10 @@ import 'package:faker/faker.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
-import 'package:fordev/domain/domain.dart';
+import 'package:surveys/domain/domain.dart';
 
-import 'package:fordev/data/usecases/usecases.dart';
-import 'package:fordev/data/http/http.dart';
+import 'package:surveys/data/usecases/usecases.dart';
+import 'package:surveys/data/http/http.dart';
 
 import '../../../infra/mocks/mocks.dart';
 import './../../mocks/mocks.dart';

@@ -1,8 +1,8 @@
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
-import 'package:fordev/domain/domain.dart';
-import 'package:fordev/main/composites/composites.dart';
+import 'package:surveys/domain/domain.dart';
+import 'package:surveys/main/composites/composites.dart';
 
 import '../../domain/mocks/mocks.dart';
 import './../../data/mocks/mocks.dart';

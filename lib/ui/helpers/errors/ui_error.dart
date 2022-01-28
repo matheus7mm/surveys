@@ -1,4 +1,4 @@
-import 'package:fordev/ui/helpers/i18n/resources.dart';
+import 'package:surveys/ui/helpers/i18n/resources.dart';
 
 enum UIError {
   requiredField,

@@ -5,15 +5,15 @@ import './../../../domain/usecases/usecases.dart';
 import './../../repositories/repositories.dart';
 
 class FirebaseRemoteAuthentication implements Authentication {
-  final UserRepository repository;
+  final AuthRepository authRepository;
 
   FirebaseRemoteAuthentication({
-    required this.repository,
+    required this.authRepository,
   });
 
   Future<AccountEntity> auth(AuthenticationParams params) async {
     try {
-      final AccountEntity entity = await repository.login(params: params);
+      final AccountEntity entity = await authRepository.login(params: params);
 
       return entity;
     } on RepositoryError catch (error) {

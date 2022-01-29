@@ -1,5 +1,5 @@
 import './../../domain/domain.dart';
 
-abstract class UserRepository {
+abstract class AuthRepository {
   Future<AccountEntity> login({required AuthenticationParams params});
 }

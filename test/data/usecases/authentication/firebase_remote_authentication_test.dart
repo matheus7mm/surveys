@@ -11,23 +11,23 @@ import './../../mocks/mocks.dart';
 
 void main() {
   late FirebaseRemoteAuthentication sut;
-  late UserRepositorySpy userRepository;
+  late AuthRepositorySpy userRepository;
   late AuthenticationParams params;
   late AccountEntity accountEntity;
 
   setUp(() {
-    userRepository = UserRepositorySpy();
+    userRepository = AuthRepositorySpy();
     params = ParamsFactory.makeAuthentication();
     accountEntity = EntityFactory.makeAccount();
     userRepository.mockLogin(accountEntity);
-    sut = FirebaseRemoteAuthentication(repository: userRepository);
+    sut = FirebaseRemoteAuthentication(authRepository: userRepository);
   });
 
   setUpAll(() {
     registerFallbackValue(ParamsFactory.makeAuthentication());
   });
 
-  test('Should call UserRepository with corret values', () async {
+  test('Should call AuthRepository with corret values', () async {
     await sut.auth(params);
 
     verify(
@@ -37,7 +37,7 @@ void main() {
     );
   });
 
-  test('Should throw UnexpectedError if UserRepository throws badRequest',
+  test('Should throw UnexpectedError if AuthRepository throws badRequest',
       () async {
     userRepository.mockLoginError(RepositoryError.badRequest);
 
@@ -46,7 +46,7 @@ void main() {
     expect(future, throwsA(DomainError.unexpected));
   });
 
-  test('Should throw UnexpectedError if UserRepository throws notFound',
+  test('Should throw UnexpectedError if AuthRepository throws notFound',
       () async {
     userRepository.mockLoginError(RepositoryError.notFound);
 
@@ -55,7 +55,7 @@ void main() {
     expect(future, throwsA(DomainError.unexpected));
   });
 
-  test('Should throw ServerError if UserRepository throws serverError',
+  test('Should throw ServerError if AuthRepository throws serverError',
       () async {
     userRepository.mockLoginError(RepositoryError.serverError);
 
@@ -65,7 +65,7 @@ void main() {
   });
 
   test(
-      'Should throw InvalidCredentialsError if UserRepository throws unauthorized',
+      'Should throw InvalidCredentialsError if AuthRepository throws unauthorized',
       () async {
     userRepository.mockLoginError(RepositoryError.unauthorized);
 
@@ -74,7 +74,7 @@ void main() {
     expect(future, throwsA(DomainError.invalidCredentials));
   });
 
-  test('Should return an Account if UserRepository returns data', () async {
+  test('Should return an Account if AuthRepository returns data', () async {
     final account = await sut.auth(params);
 
     expect(account.token, accountEntity.token);

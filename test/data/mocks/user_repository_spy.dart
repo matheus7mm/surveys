@@ -3,7 +3,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:surveys/data/repositories/repositories.dart';
 import 'package:surveys/domain/domain.dart';
 
-class UserRepositorySpy extends Mock implements UserRepository {
+class AuthRepositorySpy extends Mock implements AuthRepository {
   When mockLoginCall() => when(
         () => this.login(
           params: any(named: 'params'),

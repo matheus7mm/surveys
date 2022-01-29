@@ -5,10 +5,10 @@ import './../../../data/repositories/repositories.dart';
 
 import './../helpers/helpers.dart';
 
-class FirebaseUserRepository implements UserRepository {
+class FirebaseAuthRepository implements AuthRepository {
   final FirebaseAuth auth; // FirebaseAuth.instance
 
-  FirebaseUserRepository({required this.auth});
+  FirebaseAuthRepository({required this.auth});
 
   Future<AccountEntity> login({required AuthenticationParams params}) async {
     try {

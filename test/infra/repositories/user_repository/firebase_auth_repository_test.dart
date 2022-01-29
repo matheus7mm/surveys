@@ -10,14 +10,14 @@ import './../../../domain/mocks/mocks.dart';
 import './../../mocks/firebase/firebase.dart';
 
 void main() {
-  late FirebaseUserRepository sut;
+  late FirebaseAuthRepository sut;
   late FirebaseAuthSpy auth;
   late MockUser mockUser;
 
   setUp(() async {
     mockUser = MockUserFactory.makeUser();
     auth = FirebaseAuthSpy();
-    sut = FirebaseUserRepository(
+    sut = FirebaseAuthRepository(
       auth: auth,
     );
     auth.mockSignInWithEmailAndPassword(mockUser: mockUser);

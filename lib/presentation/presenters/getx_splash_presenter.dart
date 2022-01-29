@@ -20,7 +20,7 @@ class GetxSplashPresenter extends GetxController
       ),
     );
     try {
-      await Firebase.initializeApp();
+      // await Firebase.initializeApp();
       await loadCurrentAccount.load();
       navigateTo = NavigationState(route: '/surveys');
     } catch (error) {

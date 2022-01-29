@@ -8,3 +8,10 @@ AddAccount makeRemoteAddAccount() {
     url: makeApiUrl('signup'),
   );
 }
+
+AddAccount makeFirebaseRemoteAddAccount() {
+  return FirebaseRemoteAddAccount(
+    authRepository: makeAuthRepository(),
+    userRepository: makeUserRepository(),
+  );
+}

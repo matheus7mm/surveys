@@ -5,7 +5,7 @@ import './../../../factories/factories.dart';
 
 LoginPresenter makeGetxLoginPresenter() {
   return GetxLoginPresenter(
-    authentication: makeRemoteAuthentication(),
+    authentication: makeFirebaseRemoteAuthentication(),
     validation: makeLoginValidation(),
     saveCurrentAccount: makeLocalSaveCurrentAccount(),
   );

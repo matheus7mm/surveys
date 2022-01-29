@@ -8,3 +8,9 @@ Authentication makeRemoteAuthentication() {
     url: makeApiUrl('login'),
   );
 }
+
+Authentication makeFirebaseRemoteAuthentication() {
+  return FirebaseRemoteAuthentication(
+    authRepository: makeAuthRepository(),
+  );
+}

@@ -23,22 +23,3 @@ class FirebaseRemoteAuthentication implements Authentication {
     }
   }
 }
-
-class FirebaseRemoteAuthenticationParams {
-  final String email;
-  final String password;
-
-  FirebaseRemoteAuthenticationParams({
-    required this.email,
-    required this.password,
-  });
-
-  factory FirebaseRemoteAuthenticationParams.fromDomain(
-          AuthenticationParams params) =>
-      FirebaseRemoteAuthenticationParams(
-        email: params.email,
-        password: params.secret,
-      );
-
-  Map toJson() => {'email': email, 'password': password};
-}

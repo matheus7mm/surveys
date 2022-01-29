@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "418904842720",
+    "project_id": "surveys-42b66",
+    "storage_bucket": "surveys-42b66.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418904842720:android:0cfdce2c4215f39c718b85",
+        "android_client_info": {
+          "package_name": "com.example.surveys"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "418904842720-m0ceav3p1flgn1kdbhkjbid6svkiridh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkF1zjwEfDktN9As0kHVSUKSxu3bgd4pI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "418904842720-m0ceav3p1flgn1kdbhkjbid6svkiridh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

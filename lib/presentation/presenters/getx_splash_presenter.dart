@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:get/state_manager.dart';
 
 import './../../domain/domain.dart';
@@ -19,6 +20,7 @@ class GetxSplashPresenter extends GetxController
       ),
     );
     try {
+      await Firebase.initializeApp();
       await loadCurrentAccount.load();
       navigateTo = NavigationState(route: '/surveys');
     } catch (error) {

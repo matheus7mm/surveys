@@ -17,7 +17,8 @@ void main() {
 
   setUp(() {
     loadCurrentAccount = LoadCurrentAccountSpy();
-    sut = GetxSplashPresenter(loadCurrentAccount: loadCurrentAccount);
+    sut = GetxSplashPresenter(
+        loadCurrentAccount: loadCurrentAccount, initFirebase: () async {});
     loadCurrentAccount.mockLoad(account: EntityFactory.makeAccount());
   });
 

@@ -9,8 +9,10 @@ class GetxSplashPresenter extends GetxController
     with NavigationManager
     implements SplashPresenter {
   final LoadCurrentAccount loadCurrentAccount;
+  final Future<void> Function() initFirebase;
 
-  GetxSplashPresenter({required this.loadCurrentAccount});
+  GetxSplashPresenter(
+      {required this.loadCurrentAccount, required this.initFirebase});
 
   Future<void> checkAccount({int durationInSeconds = 2}) async {
     await Future.delayed(
@@ -19,7 +21,7 @@ class GetxSplashPresenter extends GetxController
       ),
     );
     try {
-      // await Firebase.initializeApp();
+      await initFirebase();
       await loadCurrentAccount.load();
       navigateTo = NavigationState(route: '/surveys');
     } catch (error) {

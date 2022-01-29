@@ -2,11 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import './../../../domain/domain.dart';
 import './../../../data/repositories/repositories.dart';
+import './../../../data/models/models.dart';
 
 import './../helpers/helpers.dart';
 
 class FirebaseAuthRepository implements AuthRepository {
-  final FirebaseAuth auth; // FirebaseAuth.instance
+  final FirebaseAuth auth;
 
   FirebaseAuthRepository({required this.auth});
 
@@ -36,7 +37,7 @@ class FirebaseAuthRepository implements AuthRepository {
     }
   }
 
-  Future<AccountEntity> signUp({required AddAccountParams params}) async {
+  Future<FirebaseUserModel> signUp({required AddAccountParams params}) async {
     try {
       final FirebaseRemoteAddAccountParams firebaseParams =
           FirebaseRemoteAddAccountParams.fromDomain(params);
@@ -45,7 +46,10 @@ class FirebaseAuthRepository implements AuthRepository {
           email: firebaseParams.email, password: firebaseParams.password);
 
       if (userCredential.user?.refreshToken != null) {
-        return AccountEntity(token: userCredential.user!.refreshToken!);
+        return FirebaseUserModel(
+          refreshToken: userCredential.user!.refreshToken!,
+          uid: userCredential.user!.uid,
+        );
       } else {
         throw Exception();
       }

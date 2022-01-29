@@ -4,18 +4,29 @@ import './../../../domain/usecases/usecases.dart';
 
 import './../../repositories/repositories.dart';
 
+import './../../models/models.dart';
+
 class FirebaseRemoteAddAccount implements AddAccount {
   final AuthRepository authRepository;
+  final UserRepository userRepository;
 
   FirebaseRemoteAddAccount({
     required this.authRepository,
+    required this.userRepository,
   });
 
   Future<AccountEntity> add(AddAccountParams params) async {
     try {
-      final AccountEntity entity = await authRepository.signUp(params: params);
+      final FirebaseUserModel userModel =
+          await authRepository.signUp(params: params);
 
-      return entity;
+      await userRepository.setUser(userModel: userModel);
+
+      if (userModel.refreshToken == null) {
+        throw DomainError.unexpected;
+      }
+
+      return userModel.toEntity()!;
     } on RepositoryError catch (error) {
       error == RepositoryError.forbidden
           ? throw DomainError.emailInUse

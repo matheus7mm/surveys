@@ -1,9 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:test/test.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth_mocks/firebase_auth_mocks.dart';
 
+import 'package:surveys/data/models/models.dart';
 import 'package:surveys/data/repositories/repositories.dart';
-import 'package:surveys/domain/domain.dart';
 import 'package:surveys/infra/repositories/repositories.dart';
 
 import '../../../../domain/mocks/mocks.dart';
@@ -25,10 +25,11 @@ void main() {
   });
 
   test('Should return a valid AccountEntity if sign up proceeds', () async {
-    final AccountEntity result =
+    final FirebaseUserModel result =
         await sut.signUp(params: ParamsFactory.makeAddAccount());
 
-    expect(result.token, mockUser.refreshToken);
+    expect(result.refreshToken, mockUser.refreshToken);
+    expect(result.uid, isNotNull);
   });
 
   test('Should throw badRequest if sign up returns a null refreshToken',

@@ -1,6 +1,7 @@
 enum FirebaseExceptionError {
   notFound,
   wrongPassword,
+  emailInUse,
 }
 
 extension FirebaseExceptionErrorExtension on FirebaseExceptionError {
@@ -10,6 +11,8 @@ extension FirebaseExceptionErrorExtension on FirebaseExceptionError {
         return 'user-not-found';
       case FirebaseExceptionError.wrongPassword:
         return 'wrong-password';
+      case FirebaseExceptionError.emailInUse:
+        return 'email-already-in-use';
       default:
         return '';
     }

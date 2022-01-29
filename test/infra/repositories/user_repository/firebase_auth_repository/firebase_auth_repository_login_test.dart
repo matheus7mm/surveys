@@ -6,10 +6,11 @@ import 'package:surveys/data/repositories/repositories.dart';
 import 'package:surveys/domain/domain.dart';
 import 'package:surveys/infra/repositories/repositories.dart';
 
-import './../../../domain/mocks/mocks.dart';
-import './../../mocks/firebase/firebase.dart';
+import '../../../../domain/mocks/mocks.dart';
+import '../../../mocks/firebase/firebase.dart';
 
 void main() {
+  // Login test
   late FirebaseAuthRepository sut;
   late FirebaseAuthSpy auth;
   late MockUser mockUser;
@@ -23,12 +24,10 @@ void main() {
     auth.mockSignInWithEmailAndPassword(mockUser: mockUser);
   });
 
-  setUpAll(() {});
-
   test('Should return a valid AccountEntity if authentication proceeds',
       () async {
     final AccountEntity result =
-        await sut.login(params: ParamsFactory.makeValidAuthentication());
+        await sut.login(params: ParamsFactory.makeAuthentication());
 
     expect(result.token, mockUser.refreshToken);
   });
@@ -37,7 +36,7 @@ void main() {
       () async {
     auth.mockSignInWithEmailAndPassword(
         mockUser: MockUserFactory.makeUserWithInvalidToken());
-    final future = sut.login(params: ParamsFactory.makeValidAuthentication());
+    final future = sut.login(params: ParamsFactory.makeAuthentication());
 
     expect(future, throwsA(RepositoryError.badRequest));
   });
@@ -45,10 +44,10 @@ void main() {
   test(
       'Should throw RepositoryError notFound if authentication throws FirebaseAuthException notFound',
       () async {
-    auth.mockmockSignInWithEmailAndPasswordError(
+    auth.mockSignInWithEmailAndPasswordError(
         error: FirebaseAuthException(
             code: FirebaseExceptionError.notFound.toCode));
-    final future = sut.login(params: ParamsFactory.makeValidAuthentication());
+    final future = sut.login(params: ParamsFactory.makeAuthentication());
 
     expect(future, throwsA(RepositoryError.notFound));
   });
@@ -56,10 +55,10 @@ void main() {
   test(
       'Should throw RepositoryError forbidden if authentication throws FirebaseAuthException wrongPassword',
       () async {
-    auth.mockmockSignInWithEmailAndPasswordError(
+    auth.mockSignInWithEmailAndPasswordError(
         error: FirebaseAuthException(
             code: FirebaseExceptionError.wrongPassword.toCode));
-    final future = sut.login(params: ParamsFactory.makeValidAuthentication());
+    final future = sut.login(params: ParamsFactory.makeAuthentication());
 
     expect(future, throwsA(RepositoryError.forbidden));
   });
@@ -67,9 +66,8 @@ void main() {
   test(
       'Should throw RepositoryError badRequest if authentication throws any exception',
       () async {
-    auth.mockmockSignInWithEmailAndPasswordError(
-        error: Exception('any_exception'));
-    final future = sut.login(params: ParamsFactory.makeValidAuthentication());
+    auth.mockSignInWithEmailAndPasswordError(error: Exception('any_exception'));
+    final future = sut.login(params: ParamsFactory.makeAuthentication());
 
     expect(future, throwsA(RepositoryError.badRequest));
   });

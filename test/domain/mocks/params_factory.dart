@@ -13,9 +13,4 @@ class ParamsFactory {
         email: faker.internet.email(),
         secret: faker.internet.password(),
       );
-
-  static AuthenticationParams makeValidAuthentication() => AuthenticationParams(
-        email: 'test@test.com',
-        secret: '123456',
-      );
 }

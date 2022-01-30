@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './../helpers/helpers.dart';
+
 Future<void> showLoading(BuildContext context) async {
   await Future.delayed(Duration.zero);
   await showDialog(
@@ -15,7 +17,7 @@ Future<void> showLoading(BuildContext context) async {
               height: 10,
             ),
             Text(
-              'Aguarde...',
+              '${R.strings.wait}...',
               textAlign: TextAlign.center,
             ),
           ],

@@ -36,13 +36,14 @@ class GetxSurveyResultPresenter extends GetxController
   Future<void> showResultOnAction(Future<SurveyResultEntity> action()) async {
     try {
       isLoading = true;
-      final surveyResult = await action();
+      final surveyResult = await action().timeout(Duration(seconds: 30));
       _surveyResult.subject.add(surveyResult.toViewModel());
-    } on DomainError catch (error) {
+    } catch (error) {
       if (error == DomainError.accessDenied) {
         isSessionExpired = true;
       } else {
-        _surveyResult.subject.addError(UIError.unexpected.description);
+        _surveyResult.subject
+            .addError(UIError.unexpected.description, StackTrace.current);
       }
     } finally {
       isLoading = false;

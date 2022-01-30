@@ -40,7 +40,8 @@ class GetxSurveysPresenter extends GetxController
       if (error == DomainError.accessDenied) {
         isSessionExpired = true;
       } else {
-        _surveys.subject.addError(UIError.unexpected.description);
+        _surveys.subject
+            .addError(UIError.unexpected.description, StackTrace.current);
       }
     } finally {
       isLoading = false;

@@ -9,6 +9,7 @@ class PtBr implements Translations {
       'Algo errado aconteceu. Tente novamente em breve.';
 
   String get addAccount => 'Criar conta';
+  String get cantLoadImage => 'Imagem não pode ser carregada...';
   String get confirmPassword => 'Confirmar senha';
   String get email => 'Email';
   String get enter => 'Entrar';

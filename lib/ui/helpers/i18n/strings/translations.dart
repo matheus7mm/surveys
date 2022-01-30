@@ -6,6 +6,7 @@ abstract class Translations {
   String get msgUnexpected;
 
   String get addAccount;
+  String get cantLoadImage;
   String get confirmPassword;
   String get email;
   String get enter;

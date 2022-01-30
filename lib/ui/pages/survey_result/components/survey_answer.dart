@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import './../../../helpers/helpers.dart';
 import './../survey_result.dart';
 
 import './components.dart';
@@ -45,6 +46,10 @@ class SurveyAnswer extends StatelessWidget {
           Image.network(
             viewModel.image!,
             width: 40,
+            errorBuilder: (BuildContext context, Object exception,
+                StackTrace? stackTrace) {
+              return Text(R.strings.cantLoadImage);
+            },
           ),
         );
       }

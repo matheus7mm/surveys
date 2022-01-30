@@ -8,6 +8,7 @@ class EnUs implements Translations {
   String get msgUnexpected => 'Something went wrong. Try again later.';
 
   String get addAccount => 'Add Account';
+  String get cantLoadImage => 'Can\'t load image...';
   String get confirmPassword => 'Confirm password';
   String get email => 'Email';
   String get enter => 'Enter';

@@ -19,8 +19,8 @@ class FirebaseAuthRepository implements AuthRepository {
       UserCredential userCredential = await auth.signInWithEmailAndPassword(
           email: firebaseParams.email, password: firebaseParams.password);
 
-      if (userCredential.user?.refreshToken != null) {
-        return AccountEntity(token: userCredential.user!.refreshToken!);
+      if (userCredential.user != null) {
+        return AccountEntity(token: userCredential.user!.uid);
       } else {
         throw Exception();
       }
@@ -43,12 +43,16 @@ class FirebaseAuthRepository implements AuthRepository {
           FirebaseRemoteAddAccountParams.fromDomain(params);
 
       UserCredential userCredential = await auth.createUserWithEmailAndPassword(
-          email: firebaseParams.email, password: firebaseParams.password);
+        email: firebaseParams.email,
+        password: firebaseParams.password,
+      );
 
       if (userCredential.user?.refreshToken != null) {
         return FirebaseUserModel(
           refreshToken: userCredential.user!.refreshToken!,
           uid: userCredential.user!.uid,
+          email: params.email,
+          name: params.name,
         );
       } else {
         throw Exception();

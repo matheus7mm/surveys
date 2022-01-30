@@ -12,6 +12,14 @@ RemoteLoadSurveys makeRemoteLoadSurveys() {
   );
 }
 
+LoadSurveys makeFirebaseRemoteLoadSurveys() {
+  return FirebaseRemoteLoadSurveys(
+    surveyRepository: makeSurveyRepository(),
+    fetchSecureCacheStorage: makeSecureStorageAdapter(),
+    deleteSecureCacheStorage: makeSecureStorageAdapter(),
+  );
+}
+
 LocalLoadSurveys makeLocalLoadSurveys() {
   return LocalLoadSurveys(
     cacheStorage: makeLocalStorageAdapter(),
@@ -20,7 +28,7 @@ LocalLoadSurveys makeLocalLoadSurveys() {
 
 LoadSurveys makeRemoteLoadSurveysWithLocalFallback() {
   return RemoteLoadSurveysWithLocalFallback(
-    remote: makeRemoteLoadSurveys(),
+    remote: makeFirebaseRemoteLoadSurveys(),
     local: makeLocalLoadSurveys(),
   );
 }

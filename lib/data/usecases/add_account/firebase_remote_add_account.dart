@@ -17,8 +17,7 @@ class FirebaseRemoteAddAccount implements AddAccount {
 
   Future<AccountEntity> add(AddAccountParams params) async {
     try {
-      final FirebaseUserModel userModel =
-          await authRepository.signUp(params: params);
+      FirebaseUserModel userModel = await authRepository.signUp(params: params);
 
       await userRepository.setUser(userModel: userModel);
 

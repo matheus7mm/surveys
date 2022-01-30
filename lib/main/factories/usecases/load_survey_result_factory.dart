@@ -11,6 +11,14 @@ RemoteLoadSurveyResult makeRemoteLoadSurveyResult(String surveyId) {
   );
 }
 
+LoadSurveyResult makeFirebaseRemoteLoadSurveyResult(String surveyId) {
+  return FirebaseRemoteLoadSurveyResult(
+    surveyRepository: makeSurveyRepository(),
+    fetchSecureCacheStorage: makeSecureStorageAdapter(),
+    deleteSecureCacheStorage: makeSecureStorageAdapter(),
+  );
+}
+
 LocalLoadSurveyResult makeLocalLoadSurveyResult(String surveyId) {
   return LocalLoadSurveyResult(
     cacheStorage: makeLocalStorageAdapter(),
@@ -19,6 +27,6 @@ LocalLoadSurveyResult makeLocalLoadSurveyResult(String surveyId) {
 
 LoadSurveyResult makeRemoteLoadSurveyResultWithLocalFallback(String surveyId) =>
     RemoteLoadSurveyResultWithLocalFallback(
-      remote: makeRemoteLoadSurveyResult(surveyId),
+      remote: makeFirebaseRemoteLoadSurveyResult(surveyId),
       local: makeLocalLoadSurveyResult(surveyId),
     );

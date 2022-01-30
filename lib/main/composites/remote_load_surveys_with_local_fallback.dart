@@ -2,7 +2,7 @@ import './../../domain/domain.dart';
 import './../../data/usecases/usecases.dart';
 
 class RemoteLoadSurveysWithLocalFallback implements LoadSurveys {
-  final RemoteLoadSurveys remote;
+  final LoadSurveys remote;
   final LocalLoadSurveys local;
 
   RemoteLoadSurveysWithLocalFallback({

@@ -9,3 +9,12 @@ SaveSurveyResult makeRemoteSaveSurveyResult(String surveyId) {
     url: makeApiUrl('surveys/$surveyId/results'),
   );
 }
+
+SaveSurveyResult makeFirebaseRemoteSaveSurveyResult(String surveyId) {
+  return FirebaseRemoteSaveSurveyResult(
+    surveyRepository: makeSurveyRepository(),
+    fetchSecureCacheStorage: makeSecureStorageAdapter(),
+    deleteSecureCacheStorage: makeSecureStorageAdapter(),
+    surveyId: surveyId,
+  );
+}

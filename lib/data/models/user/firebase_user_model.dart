@@ -44,7 +44,7 @@ class FirebaseUserModel extends Equatable {
       };
 
   AccountEntity? toEntity() =>
-      refreshToken != null ? AccountEntity(token: refreshToken!) : null;
+      refreshToken != null ? AccountEntity(token: uid!) : null;
 
   List<Object?> get props => [uid, refreshToken, name, email];
 }

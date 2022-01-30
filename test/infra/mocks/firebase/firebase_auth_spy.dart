@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth_mocks/firebase_auth_mocks.dart';
 import 'package:mocktail/mocktail.dart';
 
+import './firebase.dart';
+
 class FirebaseAuthSpy extends Mock implements FirebaseAuth {
   // SignInWithEmailAndPassword method
   When mockSignInWithEmailAndPasswordCall() =>
@@ -15,6 +17,12 @@ class FirebaseAuthSpy extends Mock implements FirebaseAuth {
               .signInWithEmailAndPassword(email: '', password: ''));
   void mockSignInWithEmailAndPasswordError({required Exception error}) =>
       this.mockSignInWithEmailAndPasswordCall().thenThrow(error);
+  void mockSignInWithEmailAndPassword2({
+    required UserCredentialSpy userCredential,
+  }) =>
+      this
+          .mockSignInWithEmailAndPasswordCall()
+          .thenAnswer((_) async => userCredential);
 
   // CreateUserWithEmailAndPassword method
   When mockCreateUserWithEmailAndPasswordCall() =>
@@ -28,4 +36,10 @@ class FirebaseAuthSpy extends Mock implements FirebaseAuth {
               .signInWithEmailAndPassword(email: '', password: ''));
   void mockCreateUserWithEmailAndPasswordError({required Exception error}) =>
       this.mockCreateUserWithEmailAndPasswordCall().thenThrow(error);
+  void mockCreateUserWithEmailAndPassword2({
+    required UserCredentialSpy userCredential,
+  }) =>
+      this
+          .mockCreateUserWithEmailAndPasswordCall()
+          .thenAnswer((_) async => userCredential);
 }

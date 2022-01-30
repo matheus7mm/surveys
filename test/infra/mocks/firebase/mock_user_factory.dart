@@ -9,12 +9,4 @@ class MockUserFactory {
         displayName: faker.person.firstName(),
         refreshToken: faker.jwt.valid(),
       );
-
-  static MockUser makeUserWithInvalidToken() => MockUser(
-        isAnonymous: false,
-        uid: faker.guid.guid(),
-        email: faker.internet.email(),
-        displayName: faker.person.firstName(),
-        refreshToken: null,
-      );
 }

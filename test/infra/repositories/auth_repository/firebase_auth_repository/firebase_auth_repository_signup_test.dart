@@ -14,14 +14,17 @@ void main() {
   late FirebaseAuthRepository sut;
   late FirebaseAuthSpy auth;
   late MockUser mockUser;
+  late UserCredentialSpy userCredential;
 
   setUp(() async {
     mockUser = MockUserFactory.makeUser();
+    userCredential = UserCredentialSpy();
     auth = FirebaseAuthSpy();
     sut = FirebaseAuthRepository(
       auth: auth,
     );
     auth.mockCreateUserWithEmailAndPassword(mockUser: mockUser);
+    userCredential.mockUserCall(user: null);
   });
 
   test('Should return a valid AccountEntity if sign up proceeds', () async {
@@ -32,10 +35,8 @@ void main() {
     expect(result.uid, isNotNull);
   });
 
-  test('Should throw badRequest if sign up returns a null refreshToken',
-      () async {
-    auth.mockCreateUserWithEmailAndPassword(
-        mockUser: MockUserFactory.makeUserWithInvalidToken());
+  test('Should throw badRequest if sign up returns a null user', () async {
+    auth.mockCreateUserWithEmailAndPassword2(userCredential: userCredential);
     final future = sut.signUp(params: ParamsFactory.makeAddAccount());
 
     expect(future, throwsA(RepositoryError.badRequest));

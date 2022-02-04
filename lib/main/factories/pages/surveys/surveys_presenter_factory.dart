@@ -6,5 +6,6 @@ import '../../factories.dart';
 SurveysPresenter makeGetxSurveysPresenter() {
   return GetxSurveysPresenter(
     loadSurveys: makeRemoteLoadSurveysWithLocalFallback(),
+    logOut: makeGlobalLogOut(),
   );
 }

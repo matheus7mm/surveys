@@ -69,6 +69,14 @@ class FirebaseAuthRepository implements AuthRepository {
       throw RepositoryError.badRequest;
     }
   }
+
+  Future<void> logOut() async {
+    try {
+      await auth.signOut();
+    } catch (error) {
+      throw RepositoryError.badRequest;
+    }
+  }
 }
 
 class FirebaseAuthenticationParams {

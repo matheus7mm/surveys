@@ -11,5 +11,6 @@ abstract class SurveysPresenter implements Listenable {
   Stream<NavigationState?> get navigateToStream;
 
   Future<void> loadData();
+  Future<void> signOut();
   void goToSurveyResult(String surveyId);
 }

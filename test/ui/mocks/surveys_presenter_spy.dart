@@ -19,6 +19,7 @@ class SurveysPresenterSpy extends Mock implements SurveysPresenter {
         .thenAnswer((_) => navigateToController.stream);
 
     when(() => this.loadData()).thenAnswer((_) async => _);
+    when(() => this.signOut()).thenAnswer((_) async => _);
   }
 
   void emitSurveys(List<SurveyViewModel> data) => surveysController.add(data);

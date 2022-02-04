@@ -10,10 +10,12 @@ mixin NavigationManager on GetxController {
 class NavigationState extends Equatable {
   final String route;
   final Function(dynamic value)? onPop;
+  final bool clear;
 
   NavigationState({
     required this.route,
     this.onPop,
+    this.clear = false,
   });
 
   List<Object> get props => [route];

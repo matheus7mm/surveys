@@ -12,6 +12,7 @@ class GetxSurveysPresenter extends GetxController
     with LoadingManager, SessionManager, NavigationManager
     implements SurveysPresenter {
   final LoadSurveys loadSurveys;
+  final LogOut logOut;
 
   final _surveys = Rx<List<SurveyViewModel>>([]);
 
@@ -19,6 +20,7 @@ class GetxSurveysPresenter extends GetxController
 
   GetxSurveysPresenter({
     required this.loadSurveys,
+    required this.logOut,
   });
 
   Future<void> loadData() async {
@@ -43,6 +45,19 @@ class GetxSurveysPresenter extends GetxController
         _surveys.subject
             .addError(UIError.unexpected.description, StackTrace.current);
       }
+    } finally {
+      isLoading = false;
+    }
+  }
+
+  Future<void> signOut() async {
+    try {
+      isLoading = true;
+      await logOut.logOut();
+      navigateTo = NavigationState(route: '/login', clear: true);
+    } on DomainError {
+      _surveys.subject
+          .addError(UIError.unexpected.description, StackTrace.current);
     } finally {
       isLoading = false;
     }

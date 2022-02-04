@@ -25,7 +25,7 @@ class SurveysPage extends StatelessWidget
           Padding(
             padding: EdgeInsets.only(right: 20.0),
             child: GestureDetector(
-              onTap: () {},
+              onTap: presenter.signOut,
               child: Icon(
                 Icons.logout,
                 size: 26.0,

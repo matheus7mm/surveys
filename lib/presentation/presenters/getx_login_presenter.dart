@@ -76,7 +76,7 @@ class GetxLoginPresenter extends GetxController
         ),
       );
       await saveCurrentAccount.save(account);
-      navigateTo = NavigationState(route: '/surveys');
+      navigateTo = NavigationState(route: '/surveys', clear: true);
     } on DomainError catch (error) {
       switch (error) {
         case DomainError.invalidCredentials:
@@ -91,6 +91,6 @@ class GetxLoginPresenter extends GetxController
   }
 
   void goToSignUp() {
-    navigateTo = NavigationState(route: '/signup');
+    navigateTo = NavigationState(route: '/signup', clear: true);
   }
 }

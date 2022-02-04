@@ -103,7 +103,7 @@ class GetxSignUpPresenter extends GetxController
         ),
       );
       await saveCurrentAccount.save(account);
-      navigateTo = NavigationState(route: '/surveys');
+      navigateTo = NavigationState(route: '/surveys', clear: true);
     } on DomainError catch (error) {
       switch (error) {
         case DomainError.emailInUse:
@@ -118,6 +118,6 @@ class GetxSignUpPresenter extends GetxController
   }
 
   void goToLogin() {
-    navigateTo = NavigationState(route: '/login');
+    navigateTo = NavigationState(route: '/login', clear: true);
   }
 }

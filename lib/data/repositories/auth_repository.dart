@@ -6,4 +6,6 @@ abstract class AuthRepository {
   Future<AccountEntity> login({required AuthenticationParams params});
 
   Future<FirebaseUserModel> signUp({required AddAccountParams params});
+
+  Future<void> logOut();
 }

@@ -23,9 +23,9 @@ class GetxSplashPresenter extends GetxController
     try {
       await initFirebase();
       await loadCurrentAccount.load();
-      navigateTo = NavigationState(route: '/surveys');
+      navigateTo = NavigationState(route: '/surveys', clear: true);
     } catch (error) {
-      navigateTo = NavigationState(route: '/login');
+      navigateTo = NavigationState(route: '/login', clear: true);
     }
   }
 }

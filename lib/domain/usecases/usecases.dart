@@ -5,3 +5,4 @@ export './add_account.dart';
 export './load_surveys.dart';
 export './load_survey_result.dart';
 export './save_survey_result.dart';
+export './log_out.dart';

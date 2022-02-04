@@ -119,7 +119,7 @@ void main() {
     );
   });
 
-  testWidgets('Should call LoadSurveys on reload button clickd',
+  testWidgets('Should call LoadSurveys on reload button click',
       (WidgetTester tester) async {
     await loadPage(tester);
 
@@ -128,6 +128,22 @@ void main() {
     await tester.tap(find.text(R.strings.reload));
 
     verify(() => presenter.loadData()).called(2);
+  });
+
+  testWidgets('Should find LogOut button', (WidgetTester tester) async {
+    await loadPage(tester);
+
+    expect(find.byIcon(Icons.logout), findsOneWidget);
+  });
+
+  testWidgets('Should call logOut on LogOut button click',
+      (WidgetTester tester) async {
+    await loadPage(tester);
+
+    await tester.tap(find.byIcon(Icons.logout));
+    await tester.pump();
+
+    verify(() => presenter.signOut()).called(1);
   });
 
   testWidgets(

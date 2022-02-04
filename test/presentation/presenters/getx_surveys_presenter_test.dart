@@ -12,14 +12,15 @@ import '../../domain/mocks/mocks.dart';
 void main() {
   late GetxSurveysPresenter sut;
   late LoadSurveysSpy loadSurveys;
-
+  late LogOutSpy logOut;
   List<SurveyEntity> surveys;
 
   setUp(() {
     surveys = EntityFactory.makeSurveyList();
     loadSurveys = LoadSurveysSpy();
+    logOut = LogOutSpy();
     loadSurveys.mockLoad(surveys);
-    sut = GetxSurveysPresenter(loadSurveys: loadSurveys);
+    sut = GetxSurveysPresenter(loadSurveys: loadSurveys, logOut: logOut);
   });
 
   test('Should call LoadSurveys on loadData', () async {
@@ -116,5 +117,26 @@ void main() {
 
     sut.goToSurveyResult('any_route');
     sut.goToSurveyResult('any_route');
+  });
+
+  test('Should emit correct events on signOut', () async {
+    expectLater(
+        sut.isLoadingStream,
+        emitsInOrder([
+          true,
+          false,
+        ]));
+    expectLater(
+      sut.navigateToStream,
+      emits(
+        NavigationState(
+          route: '/login',
+        ),
+      ),
+    );
+
+    await sut.signOut();
+
+    verify(() => logOut.logOut()).called(1);
   });
 }

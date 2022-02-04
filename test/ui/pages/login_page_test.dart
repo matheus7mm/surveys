@@ -171,6 +171,7 @@ void main() {
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
 
       presenter.emitLoading(false);
+      await tester.pump(Duration.zero);
       await tester.pump();
       expect(find.byType(CircularProgressIndicator), findsNothing);
 

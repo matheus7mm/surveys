@@ -27,7 +27,8 @@ Future<void> showLoading(BuildContext context) async {
   );
 }
 
-void hideLoading(BuildContext context) {
+Future<void> hideLoading(BuildContext context) async {
+  await Future.delayed(Duration.zero);
   if (Navigator.canPop(context)) {
     Navigator.of(context).pop();
   }

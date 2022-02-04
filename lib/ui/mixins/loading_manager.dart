@@ -10,7 +10,7 @@ mixin LoadingManager {
         if (isLoading == true) {
           await showLoading(context);
         } else {
-          hideLoading(context);
+          await hideLoading(context);
         }
       },
     );

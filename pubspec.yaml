@@ -32,6 +32,7 @@ dev_dependencies:
   network_image_mock: 
   firebase_auth_mocks: 
   fake_cloud_firestore:
+  flutter_lints:
 
 flutter:
   uses-material-design: true

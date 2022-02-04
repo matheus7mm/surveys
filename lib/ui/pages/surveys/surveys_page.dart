@@ -21,6 +21,18 @@ class SurveysPage extends StatelessWidget
     return Scaffold(
       appBar: AppBar(
         title: Text(R.strings.surveys),
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: 20.0),
+            child: GestureDetector(
+              onTap: () {},
+              child: Icon(
+                Icons.logout,
+                size: 26.0,
+              ),
+            ),
+          ),
+        ],
       ),
       body: Builder(
         builder: (context) {

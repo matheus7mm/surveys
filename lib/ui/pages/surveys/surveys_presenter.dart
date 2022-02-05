@@ -13,4 +13,6 @@ abstract class SurveysPresenter implements Listenable {
   Future<void> loadData();
   Future<void> signOut();
   void goToSurveyResult(String surveyId);
+
+  void close();
 }

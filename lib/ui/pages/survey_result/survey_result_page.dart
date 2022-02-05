@@ -7,8 +7,7 @@ import '../../mixins/mixins.dart';
 import './components/components.dart';
 import './survey_result.dart';
 
-class SurveyResultPage extends StatelessWidget
-    with LoadingManager, SessionManager {
+class SurveyResultPage extends StatefulWidget {
   final SurveyResultPresenter presenter;
 
   SurveyResultPage({
@@ -16,39 +15,54 @@ class SurveyResultPage extends StatelessWidget
   });
 
   @override
+  State<SurveyResultPage> createState() => _SurveyResultPageState();
+}
+
+class _SurveyResultPageState extends State<SurveyResultPage>
+    with LoadingManager, SessionManager {
+  @override
+  void dispose() {
+    widget.presenter.close();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      handleLoading(context: context, stream: widget.presenter.isLoadingStream);
+      handleSessionExpired(stream: widget.presenter.isSessionExpiredStream);
+
+      widget.presenter.loadData();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(R.strings.surveys),
       ),
-      body: Builder(
-        builder: (context) {
-          handleLoading(context: context, stream: presenter.isLoadingStream);
-          handleSessionExpired(stream: presenter.isSessionExpiredStream);
+      body: StreamBuilder<SurveyResultViewModel?>(
+        stream: widget.presenter.surveyResultStream,
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return ReloadScreen(
+              error: '${snapshot.error}',
+              reload: widget.presenter.loadData,
+            );
+          }
 
-          presenter.loadData();
+          if (snapshot.hasData) {
+            return SurveyResult(
+              viewModel: snapshot.data!,
+              onSave: widget.presenter.save,
+            );
+          }
 
-          return StreamBuilder<SurveyResultViewModel?>(
-              stream: presenter.surveyResultStream,
-              builder: (context, snapshot) {
-                if (snapshot.hasError) {
-                  return ReloadScreen(
-                    error: '${snapshot.error}',
-                    reload: presenter.loadData,
-                  );
-                }
-
-                if (snapshot.hasData) {
-                  return SurveyResult(
-                    viewModel: snapshot.data!,
-                    onSave: presenter.save,
-                  );
-                }
-
-                return SizedBox(
-                  height: 0,
-                );
-              });
+          return SizedBox(
+            height: 0,
+          );
         },
       ),
     );

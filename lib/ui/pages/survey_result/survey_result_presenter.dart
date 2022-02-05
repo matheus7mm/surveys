@@ -7,4 +7,6 @@ abstract class SurveyResultPresenter {
 
   Future<void> loadData();
   Future<void> save({required String answer});
+
+  void close();
 }

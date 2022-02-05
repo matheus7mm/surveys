@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:intl/intl.dart';
 import 'package:get/get.dart';
 
@@ -8,15 +10,29 @@ import './../../ui/helpers/helpers.dart';
 
 import './../mixins/mixins.dart';
 
+class SurveysState {
+  List<SurveyViewModel> surveys = [];
+}
+
 class GetxSurveysPresenter extends GetxController
     with LoadingManager, SessionManager, NavigationManager
     implements SurveysPresenter {
   final LoadSurveys loadSurveys;
   final LogOut logOut;
 
-  final _surveys = Rx<List<SurveyViewModel>>([]);
+  var _controller = StreamController<SurveysState>.broadcast();
+  var _state = SurveysState();
 
-  Stream<List<SurveyViewModel>> get surveysStream => _surveys.stream;
+  void _update() => _controller.add(_state);
+
+  void updateSurveys(List<SurveyViewModel> surveys) {
+    _state.surveys = surveys;
+    _update();
+  }
+
+  Stream<List<SurveyViewModel>> get surveysStream => _controller.stream.map(
+        (state) => state.surveys,
+      );
 
   GetxSurveysPresenter({
     required this.loadSurveys,
@@ -27,7 +43,7 @@ class GetxSurveysPresenter extends GetxController
     try {
       isLoading = true;
       final surveys = await loadSurveys.load();
-      _surveys.value = surveys
+      updateSurveys(surveys
           .map(
             (survey) => SurveyViewModel(
               id: survey.id,
@@ -36,14 +52,13 @@ class GetxSurveysPresenter extends GetxController
               didAnswer: survey.didAnswer,
             ),
           )
-          .toList();
+          .toList());
       isLoading = false;
     } on DomainError catch (error) {
       if (error == DomainError.accessDenied) {
         isSessionExpired = true;
       } else {
-        _surveys.subject
-            .addError(UIError.unexpected.description, StackTrace.current);
+        _controller.addError(UIError.unexpected.description);
       }
     } finally {
       isLoading = false;
@@ -56,8 +71,7 @@ class GetxSurveysPresenter extends GetxController
       await logOut.logOut();
       navigateTo = NavigationState(route: '/login', clear: true);
     } on DomainError {
-      _surveys.subject
-          .addError(UIError.unexpected.description, StackTrace.current);
+      _controller.addError(UIError.unexpected.description, StackTrace.current);
     } finally {
       isLoading = false;
     }
@@ -70,5 +84,9 @@ class GetxSurveysPresenter extends GetxController
         loadData();
       },
     );
+  }
+
+  void close() {
+    _controller.close();
   }
 }

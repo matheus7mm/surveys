@@ -107,6 +107,7 @@ void main() {
             true,
             false,
           ]));
+
       sut.surveyResultStream.listen(
         null,
         onError: expectAsync1(

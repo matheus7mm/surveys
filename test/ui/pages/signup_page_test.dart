@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:surveys/presentation/mixins/navigation_manager.dart';
+import 'package:surveys/ui/components/primary_button.dart';
 
 import 'package:surveys/ui/helpers/helpers.dart';
 import 'package:surveys/ui/pages/pages.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:surveys/ui/pages/signup/components/components.dart';
 
 import './../helpers/helpers.dart';
 import './../mocks/mocks.dart';
@@ -68,7 +70,7 @@ void main() {
           of: find.bySemanticsLabel(R.strings.email),
           matching: find.byType(Text),
         ),
-        findsOneWidget,
+        findsNWidgets(2),
       );
     },
   );
@@ -89,12 +91,11 @@ void main() {
       presenter.emitNameValid();
       await tester.pump();
       expect(
-        find.descendant(
-          of: find.bySemanticsLabel(R.strings.name),
-          matching: find.byType(Text),
-        ),
-        findsOneWidget,
-      );
+          find.descendant(
+            of: find.bySemanticsLabel(R.strings.name),
+            matching: find.byType(Text),
+          ),
+          findsNWidgets(2));
     },
   );
 
@@ -118,7 +119,7 @@ void main() {
           of: find.bySemanticsLabel(R.strings.password),
           matching: find.byType(Text),
         ),
-        findsOneWidget,
+        findsNWidgets(2),
       );
     },
   );
@@ -143,7 +144,7 @@ void main() {
           of: find.bySemanticsLabel(R.strings.confirmPassword),
           matching: find.byType(Text),
         ),
-        findsOneWidget,
+        findsNWidgets(2),
       );
     },
   );
@@ -156,7 +157,7 @@ void main() {
       presenter.emitFormValid();
       await tester.pump();
 
-      final button = tester.widget<ElevatedButton>(find.byType(ElevatedButton));
+      final button = tester.widget<PrimaryButton>(find.byType(PrimaryButton));
 
       expect(
         button.onPressed,
@@ -173,7 +174,7 @@ void main() {
       presenter.emitFormError();
       await tester.pump();
 
-      final button = tester.widget<ElevatedButton>(find.byType(ElevatedButton));
+      final button = tester.widget<PrimaryButton>(find.byType(PrimaryButton));
 
       expect(
         button.onPressed,
@@ -189,7 +190,7 @@ void main() {
 
       presenter.emitFormValid();
       await tester.pump();
-      final button = find.byType(ElevatedButton);
+      final button = find.byType(PrimaryButton);
       await tester.ensureVisible(button);
       await tester.tap(button);
       await tester.pump();
@@ -273,7 +274,7 @@ void main() {
     (WidgetTester tester) async {
       await loadPage(tester);
 
-      final button = find.text(R.strings.login);
+      final button = find.text(' ${R.strings.login}');
       await tester.ensureVisible(button);
       await tester.tap(button);
       await tester.pump();

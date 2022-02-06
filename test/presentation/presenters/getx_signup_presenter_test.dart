@@ -19,14 +19,12 @@ void main() {
   late String name;
   late String email;
   late String password;
-  late String passwordConfirmation;
   late AccountEntity account;
 
   setUp(() {
     name = faker.person.name();
     email = faker.internet.email();
     password = faker.internet.password();
-    passwordConfirmation = password;
     account = EntityFactory.makeAccount();
     validation = ValidationSpy();
     addAccount = AddAccountSpy();
@@ -49,7 +47,6 @@ void main() {
       'name': null,
       'email': email,
       'password': null,
-      'passwordConfirmation': null
     };
 
     sut.validateEmail(email);
@@ -119,7 +116,6 @@ void main() {
       'name': name,
       'email': null,
       'password': null,
-      'passwordConfirmation': null
     };
 
     sut.validateName(name);
@@ -189,7 +185,6 @@ void main() {
       'name': null,
       'email': null,
       'password': password,
-      'passwordConfirmation': null
     };
 
     sut.validatePassword(password);
@@ -236,59 +231,6 @@ void main() {
     sut.validatePassword(password);
   });
 
-  test('Should call Validation with correct passwordConfirmation', () {
-    final formData = {
-      'name': null,
-      'email': null,
-      'password': null,
-      'passwordConfirmation': passwordConfirmation,
-    };
-
-    sut.validatePasswordConfirmation(passwordConfirmation);
-
-    verify(
-      () => validation.validate(
-        field: 'passwordConfirmation',
-        input: formData,
-      ),
-    ).called(1);
-  });
-
-  test('Should emit requiredFieldError if passwordConfirmation is empty', () {
-    validation.mockValidationError(value: ValidationError.requiredField);
-
-    sut.passwordConfirmationErrorStream.listen(
-      expectAsync1(
-        (error) => expect(error, UIError.requiredField),
-      ),
-    );
-    sut.isFormValidStream.listen(
-      expectAsync1(
-        (isValid) => expect(isValid, false),
-      ),
-    );
-
-    sut.validatePasswordConfirmation(password);
-    sut.validatePasswordConfirmation(password);
-  });
-
-  test('Should emit passwordConfirmation error null if validation succeeds',
-      () {
-    sut.passwordConfirmationErrorStream.listen(
-      expectAsync1(
-        (error) => expect(error, null),
-      ),
-    );
-    sut.isFormValidStream.listen(
-      expectAsync1(
-        (isValid) => expect(isValid, false),
-      ),
-    );
-
-    sut.validatePasswordConfirmation(password);
-    sut.validatePasswordConfirmation(password);
-  });
-
   test('Should disable form button if any field is invalid', () {
     validation.mockValidationError(
         field: 'email', value: ValidationError.invalidField);
@@ -328,15 +270,12 @@ void main() {
     sut.validateEmail(email);
     await Future.delayed(Duration.zero);
     sut.validatePassword(password);
-    await Future.delayed(Duration.zero);
-    sut.validatePasswordConfirmation(passwordConfirmation);
   });
 
   test('Should call AddAccount with correct values', () async {
     sut.validateName(name);
     sut.validateEmail(email);
     sut.validatePassword(password);
-    sut.validatePasswordConfirmation(passwordConfirmation);
 
     await sut.signUp();
 
@@ -346,7 +285,6 @@ void main() {
           name: name,
           email: email,
           password: password,
-          passwordConfirmation: passwordConfirmation,
         ),
       ),
     ).called(1);
@@ -356,7 +294,6 @@ void main() {
     sut.validateName(name);
     sut.validateEmail(email);
     sut.validatePassword(password);
-    sut.validatePasswordConfirmation(passwordConfirmation);
 
     await sut.signUp();
 
@@ -370,7 +307,6 @@ void main() {
     sut.validateName(name);
     sut.validateEmail(email);
     sut.validatePassword(password);
-    sut.validatePasswordConfirmation(passwordConfirmation);
 
     expectLater(
       sut.mainErrorStream,
@@ -388,7 +324,6 @@ void main() {
     sut.validateName(name);
     sut.validateEmail(email);
     sut.validatePassword(password);
-    sut.validatePasswordConfirmation(passwordConfirmation);
 
     expectLater(
       sut.mainErrorStream,
@@ -407,7 +342,6 @@ void main() {
     sut.validateName(name);
     sut.validateEmail(email);
     sut.validatePassword(password);
-    sut.validatePasswordConfirmation(passwordConfirmation);
 
     expectLater(
       sut.mainErrorStream,
@@ -426,7 +360,6 @@ void main() {
     sut.validateName(name);
     sut.validateEmail(email);
     sut.validatePassword(password);
-    sut.validatePasswordConfirmation(passwordConfirmation);
 
     expectLater(
       sut.mainErrorStream,
@@ -444,7 +377,6 @@ void main() {
     sut.validateName(name);
     sut.validateEmail(email);
     sut.validatePassword(password);
-    sut.validatePasswordConfirmation(passwordConfirmation);
 
     sut.navigateToStream.listen(
       expectAsync1(

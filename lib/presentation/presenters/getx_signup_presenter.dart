@@ -18,18 +18,14 @@ class GetxSignUpPresenter extends GetxController
   String? _name;
   String? _email;
   String? _password;
-  String? _passwordConfirmation;
 
   var _nameError = Rx<UIError?>(null);
   var _emailError = Rx<UIError?>(null);
   var _passwordError = Rx<UIError?>(null);
-  var _passwordConfirmationError = Rx<UIError?>(null);
 
   Stream<UIError?> get nameErrorStream => _nameError.stream;
   Stream<UIError?> get emailErrorStream => _emailError.stream;
   Stream<UIError?> get passwordErrorStream => _passwordError.stream;
-  Stream<UIError?> get passwordConfirmationErrorStream =>
-      _passwordConfirmationError.stream;
 
   GetxSignUpPresenter({
     required this.validation,
@@ -55,18 +51,11 @@ class GetxSignUpPresenter extends GetxController
     _validateForm();
   }
 
-  void validatePasswordConfirmation(String passwordConfirmation) {
-    _passwordConfirmation = passwordConfirmation;
-    _passwordConfirmationError.value = _validateField('passwordConfirmation');
-    _validateForm();
-  }
-
   UIError? _validateField(String field) {
     final formData = {
       'name': _name,
       'email': _email,
       'password': _password,
-      'passwordConfirmation': _passwordConfirmation,
     };
     final error = validation.validate(field: field, input: formData);
     switch (error) {
@@ -83,11 +72,9 @@ class GetxSignUpPresenter extends GetxController
     isFormValid = _emailError.value == null &&
         _nameError.value == null &&
         _passwordError.value == null &&
-        _passwordConfirmationError.value == null &&
         _name != null &&
         _email != null &&
-        _password != null &&
-        _passwordConfirmation != null;
+        _password != null;
   }
 
   Future<void> signUp() async {
@@ -99,7 +86,6 @@ class GetxSignUpPresenter extends GetxController
           name: _name!,
           email: _email!,
           password: _password!,
-          passwordConfirmation: _passwordConfirmation!,
         ),
       );
       await saveCurrentAccount.save(account);

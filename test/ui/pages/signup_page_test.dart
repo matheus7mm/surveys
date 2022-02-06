@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:surveys/presentation/mixins/navigation_manager.dart';
-import 'package:surveys/ui/components/primary_button.dart';
+import 'package:surveys/ui/components/components.dart';
 
 import 'package:surveys/ui/helpers/helpers.dart';
 import 'package:surveys/ui/pages/pages.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:surveys/ui/pages/signup/components/components.dart';
 
 import './../helpers/helpers.dart';
 import './../mocks/mocks.dart';
@@ -43,10 +42,6 @@ void main() {
       await tester.enterText(
           find.bySemanticsLabel(R.strings.password), password);
       verify(() => presenter.validatePassword(password));
-
-      await tester.enterText(
-          find.bySemanticsLabel(R.strings.confirmPassword), password);
-      verify(() => presenter.validatePasswordConfirmation(password));
     },
   );
 
@@ -117,31 +112,6 @@ void main() {
       expect(
         find.descendant(
           of: find.bySemanticsLabel(R.strings.password),
-          matching: find.byType(Text),
-        ),
-        findsNWidgets(2),
-      );
-    },
-  );
-
-  testWidgets(
-    'Should present passwordConfirmation error',
-    (WidgetTester tester) async {
-      await loadPage(tester);
-
-      presenter.emitPasswordConfirmationError(UIError.invalidField);
-      await tester.pump();
-      expect(find.text(UIError.invalidField.description), findsOneWidget);
-
-      presenter.emitPasswordConfirmationError(UIError.requiredField);
-      await tester.pump();
-      expect(find.text(UIError.requiredField.description), findsOneWidget);
-
-      presenter.emitPasswordConfirmationValid();
-      await tester.pump();
-      expect(
-        find.descendant(
-          of: find.bySemanticsLabel(R.strings.confirmPassword),
           matching: find.byType(Text),
         ),
         findsNWidgets(2),

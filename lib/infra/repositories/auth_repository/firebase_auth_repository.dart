@@ -100,13 +100,11 @@ class FirebaseRemoteAddAccountParams {
   final String name;
   final String email;
   final String password;
-  final String passwordConfirmation;
 
   FirebaseRemoteAddAccountParams({
     required this.name,
     required this.email,
     required this.password,
-    required this.passwordConfirmation,
   });
 
   factory FirebaseRemoteAddAccountParams.fromDomain(AddAccountParams params) =>
@@ -114,6 +112,5 @@ class FirebaseRemoteAddAccountParams {
         name: params.name,
         email: params.email,
         password: params.password,
-        passwordConfirmation: params.passwordConfirmation,
       );
 }

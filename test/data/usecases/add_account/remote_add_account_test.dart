@@ -39,7 +39,6 @@ void main() {
           'name': params.name,
           'email': params.email,
           'password': params.password,
-          'passwordConfirmation': params.passwordConfirmation,
         },
       ),
     );

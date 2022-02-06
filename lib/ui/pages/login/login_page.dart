@@ -63,11 +63,13 @@ class _LoginPageState extends State<LoginPage>
                       Headline1(
                         text: R.strings.welcomeBack,
                       ),
-                      Container(
-                        padding: const EdgeInsets.only(bottom: 10),
-                        child: SvgPicture.asset(
-                          LoginAssets.surveySvg,
-                          height: totalHeight * 0.3,
+                      Expanded(
+                        child: Container(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: SvgPicture.asset(
+                            LoginAssets.surveySvg,
+                            height: totalHeight * 0.3,
+                          ),
                         ),
                       ),
                       EmailInput(),

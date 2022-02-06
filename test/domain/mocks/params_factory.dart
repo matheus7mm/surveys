@@ -6,7 +6,6 @@ class ParamsFactory {
         name: faker.person.name(),
         email: faker.internet.email(),
         password: faker.internet.password(),
-        passwordConfirmation: faker.internet.password(),
       );
 
   static AuthenticationParams makeAuthentication() => AuthenticationParams(

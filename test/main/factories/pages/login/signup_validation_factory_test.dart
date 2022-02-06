@@ -22,11 +22,6 @@ void main() {
           field: 'password',
           size: 3,
         ),
-        RequiredFieldValidation('passwordConfirmation'),
-        CompareFieldsValidation(
-          field: 'passwordConfirmation',
-          fieldToCompare: 'password',
-        ),
       ],
     );
   });

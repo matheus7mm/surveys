@@ -63,11 +63,13 @@ class _SignUpPageState extends State<SignUpPage>
                       Headline1(
                         text: R.strings.joinUs,
                       ),
-                      Container(
-                        padding: const EdgeInsets.only(bottom: 10),
-                        child: SvgPicture.asset(
-                          LoginAssets.joinUsSvg,
-                          height: totalHeight * 0.25,
+                      Expanded(
+                        child: Container(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: SvgPicture.asset(
+                            LoginAssets.joinUsSvg,
+                            height: totalHeight * 0.25,
+                          ),
                         ),
                       ),
                       NameInput(),
@@ -76,13 +78,6 @@ class _SignUpPageState extends State<SignUpPage>
                         child: EmailInput(),
                       ),
                       PasswordInput(),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          top: 8,
-                          bottom: 32,
-                        ),
-                        child: PasswordConfirmationInput(),
-                      ),
                       SignUpButton(
                         buttonWidth: totalWidth,
                       ),

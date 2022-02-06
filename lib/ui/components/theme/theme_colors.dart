@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 const Color colorBrandPrimaryDarkest = Color(0xFF08324e);
 const Color colorBrandPrimaryDark = Color(0xFF0B4870);
 const Color colorBrandPrimaryMedium = Color(0xFF2596be);
-const Color colorBrandPrimaryLight = Color(0xFFa3d3e4); //Color(0xFF9db6c6);
+const Color colorBrandPrimaryLight = Color(0xFFa8cbe2); //Color(0xFF9db6c6);
 const Color colorBrandPrimaryLightest = Color(0xFFe7edf1);
 
 // Brand secundary colors

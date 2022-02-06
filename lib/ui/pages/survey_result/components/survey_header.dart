@@ -12,6 +12,7 @@ class SurveyHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
 
+    final totalWidth = mediaQuery.size.width;
     final totalHeight = mediaQuery.size.height -
         mediaQuery.padding.top -
         mediaQuery.padding.bottom -
@@ -33,11 +34,13 @@ class SurveyHeader extends StatelessWidget {
           Flexible(
             flex: 4,
             child: Container(
+              width: totalWidth,
               padding: const EdgeInsets.only(bottom: 10),
               child: SvgPicture.asset(
                 (didAnswer == true)
                     ? SurveysAssets.didAnswerSvg
                     : SurveysAssets.didNotAnswerSvg,
+                alignment: Alignment.center,
               ),
               height: totalHeight * 0.2,
             ),

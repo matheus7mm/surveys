@@ -7,6 +7,7 @@ import './../ui/helpers/helpers.dart';
 import './factories/factories.dart';
 
 void main() {
+  // To do in the Future: use FlutterNativeSplash.removeAfter(...)
   runApp(App());
 }
 

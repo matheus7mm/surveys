@@ -38,9 +38,11 @@ class _LoginPageState extends State<LoginPage>
     final totalWidth = mediaQuery.size.width;
     final totalHeight = mediaQuery.size.height -
         mediaQuery.padding.top -
-        mediaQuery.padding.bottom;
+        mediaQuery.padding.bottom -
+        mediaQuery.viewInsets.bottom;
 
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: GestureDetector(
           onTap: () => hideKeyboard(context),
@@ -63,22 +65,28 @@ class _LoginPageState extends State<LoginPage>
                       Headline1(
                         text: R.strings.welcomeBack,
                       ),
-                      Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.only(bottom: 10),
-                          child: SvgPicture.asset(
-                            LoginAssets.surveySvg,
-                            height: totalHeight * 0.3,
+                      if (mediaQuery.viewInsets.bottom == 0)
+                        Flexible(
+                          flex: 4,
+                          child: Container(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: SvgPicture.asset(
+                              LoginAssets.surveySvg,
+                              height: totalHeight * 0.3,
+                            ),
                           ),
                         ),
-                      ),
                       EmailInput(),
                       Padding(
                         padding: EdgeInsets.only(
                           top: 8,
-                          bottom: 32,
                         ),
                         child: PasswordInput(),
+                      ),
+                      Flexible(
+                        child: SizedBox(
+                          height: 32,
+                        ),
                       ),
                       LoginButton(
                         buttonWidth: totalWidth,

@@ -38,7 +38,8 @@ class _SignUpPageState extends State<SignUpPage>
     final totalWidth = mediaQuery.size.width;
     final totalHeight = mediaQuery.size.height -
         mediaQuery.padding.top -
-        mediaQuery.padding.bottom;
+        mediaQuery.padding.bottom -
+        mediaQuery.viewInsets.bottom;
 
     return Scaffold(
       body: SafeArea(
@@ -47,7 +48,9 @@ class _SignUpPageState extends State<SignUpPage>
           child: SingleChildScrollView(
             child: ConstrainedBox(
               constraints: BoxConstraints(
-                maxHeight: totalHeight,
+                maxHeight: mediaQuery.viewInsets.bottom == 0
+                    ? totalHeight
+                    : (mediaQuery.size.height - mediaQuery.viewInsets.bottom),
               ),
               child: ListenableProvider(
                 create: (_) => widget.presenter,
@@ -63,21 +66,29 @@ class _SignUpPageState extends State<SignUpPage>
                       Headline1(
                         text: R.strings.joinUs,
                       ),
-                      Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.only(bottom: 10),
-                          child: SvgPicture.asset(
-                            LoginAssets.joinUsSvg,
-                            height: totalHeight * 0.25,
+                      if (mediaQuery.viewInsets.bottom == 0)
+                        Flexible(
+                          flex: 6,
+                          child: Container(
+                            width: totalWidth,
+                            height: totalHeight * 0.3,
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: SvgPicture.asset(
+                              LoginAssets.joinUsSvg,
+                            ),
                           ),
                         ),
-                      ),
                       NameInput(),
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 8),
                         child: EmailInput(),
                       ),
                       PasswordInput(),
+                      Flexible(
+                        child: SizedBox(
+                          height: 32,
+                        ),
+                      ),
                       SignUpButton(
                         buttonWidth: totalWidth,
                       ),

@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import './../../../helpers/helpers.dart';
 import './../login_presenter.dart';
 
+import './../../../components/components.dart';
+
 class EmailInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -11,17 +13,15 @@ class EmailInput extends StatelessWidget {
     return StreamBuilder<UIError?>(
       stream: presenter.emailErrorStream,
       builder: (context, snapshot) {
-        return TextFormField(
-          decoration: InputDecoration(
-            labelText: R.strings.email,
-            icon: Icon(
-              Icons.email,
-              color: Theme.of(context).primaryColorLight,
-            ),
-            errorText: snapshot.data?.description,
-          ),
+        return Input(
+          onChangedFunction: presenter.validateEmail,
+          hintText: R.strings.email,
+          errorText: snapshot.data?.description,
           keyboardType: TextInputType.emailAddress,
-          onChanged: presenter.validateEmail,
+          prefix: Icon(
+            Icons.email,
+            color: Theme.of(context).primaryColorLight,
+          ),
         );
       },
     );

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import './../ui/components/components.dart';
+import './../ui/helpers/helpers.dart';
 import './factories/factories.dart';
 
 void main() {
@@ -15,6 +16,8 @@ class App extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle.light,
     );
+
+    AppConfig.setOrientation(portraitMode: true);
 
     return GetMaterialApp(
       title: '4Dev',

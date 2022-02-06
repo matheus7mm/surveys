@@ -8,12 +8,15 @@ abstract class Translations {
   String get addAccount;
   String get cantLoadImage;
   String get confirmPassword;
+  String get dontHaveAnAccount;
   String get email;
   String get enter;
   String get login;
   String get name;
   String get password;
   String get reload;
+  String get signUp;
   String get surveys;
   String get wait;
+  String get welcomeBack;
 }

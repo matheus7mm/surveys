@@ -11,6 +11,7 @@ class PtBr implements Translations {
   String get addAccount => 'Criar conta';
   String get cantLoadImage => 'Imagem não pode ser carregada...';
   String get confirmPassword => 'Confirmar senha';
+  String get dontHaveAnAccount => 'Não tem uma conta?';
   String get email => 'Email';
   String get enter => 'Entrar';
   String get login => 'Login';
@@ -18,5 +19,7 @@ class PtBr implements Translations {
   String get password => 'Senha';
   String get reload => 'Recarregar';
   String get surveys => 'Enquetes';
+  String get signUp => 'Registre-se';
   String get wait => 'Aguarde';
+  String get welcomeBack => 'Bem-vinde de Volta';
 }

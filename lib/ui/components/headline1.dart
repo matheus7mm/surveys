@@ -8,10 +8,13 @@ class Headline1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text.toUpperCase(),
-      textAlign: TextAlign.center,
-      style: Theme.of(context).textTheme.headline1,
+    return Container(
+      padding: EdgeInsets.only(top: 10, bottom: 10),
+      child: Text(
+        text,
+        textAlign: TextAlign.center,
+        style: Theme.of(context).textTheme.headline1,
+      ),
     );
   }
 }

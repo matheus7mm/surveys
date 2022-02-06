@@ -21,6 +21,7 @@ dependencies:
   cloud_firestore:
   firebase_core:
   firebase_auth:
+  flutter_svg:
 
 dev_dependencies:
   flutter_test:
@@ -38,6 +39,7 @@ flutter:
   uses-material-design: true
   assets:
     - lib/ui/assets/
+    - lib/ui/assets/images/
 
 flutter_icons:
   ios: true
@@ -46,4 +48,3 @@ flutter_icons:
   image_path_ios: lib/ui/assets/icon/ios.png
   adaptive_icon_background: lib/ui/assets/icon/background.png
   adaptive_icon_foreground: lib/ui/assets/icon/foreground.png
-    - lib/ui/assets/

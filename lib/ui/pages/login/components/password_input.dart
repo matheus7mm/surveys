@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import './../../../helpers/helpers.dart';
+import './../../../components/components.dart';
 
 import './../login_presenter.dart';
 
@@ -10,20 +11,19 @@ class PasswordInput extends StatelessWidget {
   Widget build(BuildContext context) {
     final presenter = Provider.of<LoginPresenter>(context);
     return StreamBuilder<UIError?>(
-        stream: presenter.passwordErrorStream,
-        builder: (context, snapshot) {
-          return TextFormField(
-            decoration: InputDecoration(
-              labelText: R.strings.password,
-              icon: Icon(
-                Icons.lock,
-                color: Theme.of(context).primaryColorLight,
-              ),
-              errorText: snapshot.data?.description,
-            ),
-            obscureText: true,
-            onChanged: presenter.validatePassword,
-          );
-        });
+      stream: presenter.passwordErrorStream,
+      builder: (context, snapshot) {
+        return Input(
+          onChangedFunction: presenter.validatePassword,
+          hintText: R.strings.password,
+          errorText: snapshot.data?.description,
+          prefix: Icon(
+            Icons.lock,
+            color: Theme.of(context).primaryColorLight,
+          ),
+          obscureText: true,
+        );
+      },
+    );
   }
 }

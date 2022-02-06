@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import './../../../helpers/helpers.dart';
 import './../survey_result.dart';
 
 import './components.dart';

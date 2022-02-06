@@ -72,7 +72,7 @@ void main() {
       findsOneWidget,
     );
     expect(
-      find.text(R.strings.reload),
+      find.text(R.strings.reload.toUpperCase()),
       findsOneWidget,
     );
     expect(
@@ -87,7 +87,7 @@ void main() {
 
     presenter.emitSurveyResultError(UIError.unexpected.description);
     await tester.pump();
-    await tester.tap(find.text(R.strings.reload));
+    await tester.tap(find.text(R.strings.reload.toUpperCase()));
 
     verify(() => presenter.loadData()).called(2);
   });

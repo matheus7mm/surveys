@@ -42,6 +42,7 @@ class _SurveyResultPageState extends State<SurveyResultPage>
     return Scaffold(
       appBar: AppBar(
         title: Text(R.strings.surveys),
+        centerTitle: true,
       ),
       body: StreamBuilder<SurveyResultViewModel?>(
         stream: widget.presenter.surveyResultStream,

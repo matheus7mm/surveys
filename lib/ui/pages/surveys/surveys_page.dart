@@ -44,6 +44,7 @@ class _SurveysPageState extends State<SurveysPage>
     return Scaffold(
       appBar: AppBar(
         title: Text(R.strings.surveys),
+        centerTitle: true,
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 20.0),

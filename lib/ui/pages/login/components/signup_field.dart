@@ -25,8 +25,7 @@ class SignUpField extends StatelessWidget {
               color: colorBrandPrimaryDarkest,
             ),
           ),
-          GestureDetector(
-            onTap: onTap,
+          TextButton(
             child: Text(
               R.strings.signUp,
               style: TextStyle(
@@ -36,7 +35,8 @@ class SignUpField extends StatelessWidget {
                 color: colorBrandPrimaryDark,
               ),
             ),
-          )
+            onPressed: onTap,
+          ),
         ],
       ),
     );

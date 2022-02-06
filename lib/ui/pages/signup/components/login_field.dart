@@ -25,8 +25,7 @@ class LoginField extends StatelessWidget {
               color: colorBrandPrimaryDarkest,
             ),
           ),
-          GestureDetector(
-            onTap: onTap,
+          TextButton(
             child: Text(
               ' ${R.strings.login}',
               style: TextStyle(
@@ -36,6 +35,7 @@ class LoginField extends StatelessWidget {
                 color: colorBrandPrimaryDark,
               ),
             ),
+            onPressed: onTap,
           )
         ],
       ),

@@ -7,6 +7,8 @@ const Color colorBrandPrimaryMedium = Color(0xFF2596be);
 const Color colorBrandPrimaryLight = Color(0xFFa8cbe2); //Color(0xFF9db6c6);
 const Color colorBrandPrimaryLightest = Color(0xFFe7edf1);
 
+// Icon color: #66b6d2 + #2596be
+
 // Brand secundary colors
 const Color colorBrandSecundaryDarkest = Color(0xFF4c3919);
 const Color colorBrandSecundaryDark = Color(0xFFFFBE55);

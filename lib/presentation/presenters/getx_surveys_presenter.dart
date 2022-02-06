@@ -42,6 +42,7 @@ class GetxSurveysPresenter extends GetxController
   Future<void> loadData() async {
     try {
       isLoading = true;
+      //throw DomainError.unexpected;
       final surveys = await loadSurveys.load();
       updateSurveys(surveys
           .map(

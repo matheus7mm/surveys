@@ -17,9 +17,9 @@ class EnUs implements Translations {
   String get login => 'Login';
   String get name => 'Name';
   String get password => 'Password';
+  String get pleaseWait => 'Please wait...';
   String get reload => 'Reload';
   String get surveys => 'Surveys';
   String get signUp => 'Sign up';
-  String get wait => 'Wait';
   String get welcomeBack => 'Welcome Back';
 }

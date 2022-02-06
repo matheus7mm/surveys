@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:surveys/ui/components/theme/theme.dart';
 
+import './../../components/theme/theme.dart';
+import './../../helpers/helpers.dart';
 import './../../mixins/mixins.dart';
 
 import './splash.dart';
@@ -22,6 +23,8 @@ class _SplashPageState extends State<SplashPage> with NavigationManager {
       handleNavigation(stream: widget.presenter.navigateToStream);
 
       widget.presenter.checkAccount();
+      Locale myLocale = Localizations.localeOf(context);
+      R.load(myLocale);
     });
   }
 

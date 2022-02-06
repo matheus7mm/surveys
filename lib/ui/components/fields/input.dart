@@ -7,6 +7,7 @@ class Input extends StatelessWidget {
   final String? helperText;
   final Color? helperColor;
   final String? hintText;
+  final String? labelText;
   final Color? hintColor;
   final TextInputType? keyboardType;
   final void Function(String)? onChangedFunction;
@@ -32,14 +33,16 @@ class Input extends StatelessWidget {
     this.helperText,
     this.helperColor,
     this.hintText,
+    this.labelText,
     this.keyboardType,
     this.onChangedFunction,
-    this.enabledBorderColor = colorFunctionalHeavyLightest,
+    this.enabledBorderColor =
+        Colors.transparent, //colorFunctionalHeavyLightest,
     this.focusedBorderColor = colorBrandPrimaryDark,
     this.errorBorderColor = colorFeedbackDangerDark,
     this.errorText,
     this.errorColor = colorFeedbackDangerDark,
-    this.hintColor = colorFunctionalSoftDark,
+    this.hintColor = colorFunctionalHeavyLight,
     this.suffix,
     this.prefix,
     this.textInputFormatterList,
@@ -55,12 +58,16 @@ class Input extends StatelessWidget {
   });
 
   Widget get defaultInput {
+    final borderRadius = BorderRadius.circular(25.0);
+
     var enabledBorder = OutlineInputBorder(
       borderSide: BorderSide(color: enabledBorderColor, width: 2.0),
+      borderRadius: borderRadius,
     );
 
     var errorBorder = OutlineInputBorder(
       borderSide: BorderSide(color: errorBorderColor, width: 2.0),
+      borderRadius: borderRadius,
     );
 
     var errorTextStyle = TextStyle(
@@ -85,7 +92,23 @@ class Input extends StatelessWidget {
             controller: textEditingController,
             cursorColor: focusedBorderColor,
             textAlign: textAlign,
+            style: TextStyle(
+              color: colorBrandPrimaryDarkest,
+              fontSize: fontSizeXXS,
+            ),
             decoration: InputDecoration(
+              filled: true,
+              label: labelText != null
+                  ? Text(
+                      labelText!,
+                      style: TextStyle(
+                        color: colorBrandPrimaryMedium,
+                        fontSize: fontSizeXXS,
+                      ),
+                    )
+                  : null,
+              floatingLabelBehavior: FloatingLabelBehavior.never,
+              fillColor: colorFunctionalSoftMedium,
               prefixIcon: prefix,
               prefixIconConstraints: prefixIconConstraints,
               contentPadding:
@@ -94,12 +117,13 @@ class Input extends StatelessWidget {
               hintText: hintText,
               hintStyle: TextStyle(color: hintColor, fontSize: fontSizeXXS),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(4),
+                borderRadius: BorderRadius.circular(25),
                 borderSide: BorderSide(),
               ),
               enabledBorder: enabledBorder,
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: focusedBorderColor, width: 2.0),
+                borderRadius: borderRadius,
               ),
               errorBorder: errorText != null ? errorBorder : enabledBorder,
               errorMaxLines: errorMaxLines,

@@ -19,7 +19,7 @@ class LoginButton extends StatelessWidget {
       builder: (context, snapshot) {
         return PrimaryButton(
           onPressed: snapshot.data == true ? presenter.auth : null,
-          buttonText: R.strings.enter.toUpperCase(),
+          buttonText: R.strings.login.toUpperCase(),
           overlayColor: colorBrandPrimaryDarkest,
           backgroundColor: colorBrandPrimaryDark,
           backgroundDisabledColor: colorBrandPrimaryLight,

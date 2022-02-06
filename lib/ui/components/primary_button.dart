@@ -19,7 +19,7 @@ class PrimaryButton extends StatelessWidget {
     required this.backgroundColor,
     required this.overlayColor,
     required this.onPressed,
-    this.totalHeight = 56,
+    this.totalHeight = 50,
     this.backgroundDisabledColor,
     this.isLoading = false,
     this.textColor,
@@ -32,6 +32,11 @@ class PrimaryButton extends StatelessWidget {
       width: totalWidth,
       child: TextButton(
         style: ButtonStyle(
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25.0),
+            ),
+          ),
           backgroundColor: MaterialStateProperty.resolveWith<Color>(
             (Set<MaterialState> states) {
               if (states.contains(MaterialState.pressed))

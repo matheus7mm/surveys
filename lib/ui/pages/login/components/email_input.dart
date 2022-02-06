@@ -15,7 +15,8 @@ class EmailInput extends StatelessWidget {
       builder: (context, snapshot) {
         return Input(
           onChangedFunction: presenter.validateEmail,
-          hintText: R.strings.email,
+          hintText: 'matheus@gmail.com',
+          labelText: R.strings.email,
           errorText: snapshot.data?.description,
           keyboardType: TextInputType.emailAddress,
           prefix: Icon(

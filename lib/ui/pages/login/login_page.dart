@@ -33,8 +33,12 @@ class _LoginPageState extends State<LoginPage>
 
   @override
   Widget build(BuildContext context) {
-    final totalWidth = MediaQuery.of(context).size.width;
-    final totalHeight = MediaQuery.of(context).size.height;
+    final mediaQuery = MediaQuery.of(context);
+
+    final totalWidth = mediaQuery.size.width;
+    final totalHeight = mediaQuery.size.height -
+        mediaQuery.padding.top -
+        mediaQuery.padding.bottom;
 
     return Scaffold(
       body: SafeArea(
@@ -48,19 +52,21 @@ class _LoginPageState extends State<LoginPage>
               child: ListenableProvider(
                 create: (_) => widget.presenter,
                 child: Container(
-                  padding: const EdgeInsets.all(32),
+                  padding: const EdgeInsets.all(16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // LoginHeader(),
+                      Spacer(
+                        flex: 1,
+                      ),
                       Headline1(
                         text: R.strings.welcomeBack,
                       ),
                       Container(
+                        padding: const EdgeInsets.only(bottom: 10),
                         child: SvgPicture.asset(
                           LoginAssets.surveySvg,
-                          //width: 100,
                           height: totalHeight * 0.3,
                         ),
                       ),
@@ -75,9 +81,12 @@ class _LoginPageState extends State<LoginPage>
                       LoginButton(
                         buttonWidth: totalWidth,
                       ),
+                      Spacer(
+                        flex: 2,
+                      ),
                       SignUpField(
                         onTap: widget.presenter.goToSignUp,
-                      )
+                      ),
                     ],
                   ),
                 ),

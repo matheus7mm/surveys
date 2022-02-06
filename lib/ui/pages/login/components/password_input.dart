@@ -15,7 +15,8 @@ class PasswordInput extends StatelessWidget {
       builder: (context, snapshot) {
         return Input(
           onChangedFunction: presenter.validatePassword,
-          hintText: R.strings.password,
+          hintText: 'Zlue@123',
+          labelText: R.strings.password,
           errorText: snapshot.data?.description,
           prefix: Icon(
             Icons.lock,

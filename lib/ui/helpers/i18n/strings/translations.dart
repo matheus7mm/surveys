@@ -7,7 +7,6 @@ abstract class Translations {
 
   String get addAccount;
   String get alreadyHaveAnAccount;
-  String get cantLoadImage;
   String get confirmPassword;
   String get dontHaveAnAccount;
   String get email;

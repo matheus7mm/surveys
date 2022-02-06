@@ -10,7 +10,6 @@ class PtBr implements Translations {
 
   String get addAccount => 'Criar conta';
   String get alreadyHaveAnAccount => 'Já tem uma conta?';
-  String get cantLoadImage => 'Imagem não pode ser carregada...';
   String get confirmPassword => 'Confirmar senha';
   String get dontHaveAnAccount => 'Não tem uma conta?';
   String get email => 'Email';

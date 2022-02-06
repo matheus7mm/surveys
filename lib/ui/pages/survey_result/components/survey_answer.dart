@@ -48,7 +48,7 @@ class SurveyAnswer extends StatelessWidget {
             width: 40,
             errorBuilder: (BuildContext context, Object exception,
                 StackTrace? stackTrace) {
-              return Text(R.strings.cantLoadImage);
+              return Container();
             },
           ),
         );

@@ -9,7 +9,6 @@ class EnUs implements Translations {
 
   String get addAccount => 'Add Account';
   String get alreadyHaveAnAccount => 'Already have an account?';
-  String get cantLoadImage => 'Can\'t load image...';
   String get confirmPassword => 'Confirm password';
   String get dontHaveAnAccount => 'Don\'t have an account?';
   String get email => 'Email';

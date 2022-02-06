@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import './../../../helpers/helpers.dart';
+import './../../../components/components.dart';
+
 import '../signup_presenter.dart';
 
 class EmailInput extends StatelessWidget {
@@ -11,17 +13,19 @@ class EmailInput extends StatelessWidget {
     return StreamBuilder<UIError?>(
       stream: presenter.emailErrorStream,
       builder: (context, snapshot) {
-        return TextFormField(
-          decoration: InputDecoration(
-            labelText: R.strings.email,
-            icon: Icon(
+        return Input(
+          onChangedFunction: presenter.validateEmail,
+          hintText: 'matheus@gmail.com',
+          labelText: R.strings.email,
+          errorText: snapshot.data?.description,
+          prefix: Padding(
+            padding: EdgeInsets.only(left: 20, right: 10),
+            child: Icon(
               Icons.email,
               color: Theme.of(context).primaryColorLight,
             ),
-            errorText: snapshot.data?.description,
           ),
           keyboardType: TextInputType.emailAddress,
-          onChanged: presenter.validateEmail,
         );
       },
     );

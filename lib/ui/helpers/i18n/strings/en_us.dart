@@ -8,10 +8,12 @@ class EnUs implements Translations {
   String get msgUnexpected => 'Something went wrong. Try again later.';
 
   String get addAccount => 'Add Account';
+  String get alreadyHaveAnAccount => 'Already have an account?';
   String get cantLoadImage => 'Can\'t load image...';
   String get confirmPassword => 'Confirm password';
   String get dontHaveAnAccount => 'Don\'t have an account?';
   String get email => 'Email';
+  String get joinUs => 'Join Us!';
   String get enter => 'Enter';
   String get login => 'Login';
   String get name => 'Name';

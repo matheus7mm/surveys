@@ -18,7 +18,11 @@ class SurveyResult extends StatelessWidget {
     return ListView.builder(
       itemBuilder: (context, index) {
         if (index == 0) {
-          return SurveyHeader(question: viewModel.question);
+          return SurveyHeader(
+            question: viewModel.question,
+            didAnswer:
+                viewModel.answers.any((item) => item.isCurrentAnswer == true),
+          );
         }
 
         final answer = viewModel.answers[index - 1];

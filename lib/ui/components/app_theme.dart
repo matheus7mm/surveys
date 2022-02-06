@@ -6,10 +6,10 @@ ThemeData makeAppTheme() {
   final primaryColor = colorBrandPrimaryDark;
   final primaryColorDark = colorBrandPrimaryDarkest;
   final primaryColorLight = colorBrandPrimaryMedium;
-  final secundaryColor = Color.fromRGBO(0, 77, 64, 1);
-  final secondaryColorDark = Color.fromRGBO(0, 36, 26, 1);
-  final disableColor = Colors.grey[400];
-  final dividerColor = Colors.grey;
+  final secundaryColor = colorBrandSecundaryDark;
+  final secondaryColorDark = colorBrandSecundaryDarkest;
+  final disableColor = colorFunctionalHeavyLightest;
+  final dividerColor = colorFunctionalHeavyMedium;
 
   final textTheme = TextTheme(
     headline1: TextStyle(
@@ -54,7 +54,7 @@ ThemeData makeAppTheme() {
     disabledColor: disableColor,
     dividerColor: dividerColor,
     colorScheme: ColorScheme.light(primary: primaryColor),
-    backgroundColor: Colors.white,
+    backgroundColor: colorFunctionalSoftLightest,
     textTheme: textTheme,
     inputDecorationTheme: inputDecorationTheme,
     buttonTheme: buttonTheme,

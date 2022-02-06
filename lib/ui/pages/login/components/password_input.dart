@@ -18,9 +18,12 @@ class PasswordInput extends StatelessWidget {
           hintText: 'Zlue@123',
           labelText: R.strings.password,
           errorText: snapshot.data?.description,
-          prefix: Icon(
-            Icons.lock,
-            color: Theme.of(context).primaryColorLight,
+          prefix: Padding(
+            padding: EdgeInsets.only(left: 20, right: 10),
+            child: Icon(
+              Icons.lock,
+              color: Theme.of(context).primaryColorLight,
+            ),
           ),
           obscureText: true,
         );

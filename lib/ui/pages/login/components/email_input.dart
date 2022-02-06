@@ -19,9 +19,12 @@ class EmailInput extends StatelessWidget {
           labelText: R.strings.email,
           errorText: snapshot.data?.description,
           keyboardType: TextInputType.emailAddress,
-          prefix: Icon(
-            Icons.email,
-            color: Theme.of(context).primaryColorLight,
+          prefix: Padding(
+            padding: EdgeInsets.only(left: 20, right: 10),
+            child: Icon(
+              Icons.email,
+              color: Theme.of(context).primaryColorLight,
+            ),
           ),
         );
       },

@@ -22,6 +22,7 @@ dependencies:
   firebase_core:
   firebase_auth:
   flutter_svg:
+  firebase_messaging:
 
 dev_dependencies:
   flutter_test:

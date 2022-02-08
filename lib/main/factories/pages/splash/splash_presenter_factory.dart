@@ -1,4 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:surveys/ui/helpers/helpers.dart';
 
 import '../../../../presentation/presenters/presenters.dart';
 import '../../../../ui/pages/pages.dart';
@@ -10,5 +12,8 @@ SplashPresenter makeGetxSplashPresenter() {
       loadCurrentAccount: makeLocalLoadCurrentAccount(),
       initFirebase: () async {
         await Firebase.initializeApp();
+        final pushNotificationService =
+            PushNotificationService(FirebaseMessaging.instance);
+        await pushNotificationService.initialise();
       });
 }

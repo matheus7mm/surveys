@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:418904842720:android:0cfdce2c4215f39c718b85",
+        "mobilesdk_app_id": "1:418904842720:android:5e2e38316d296a32718b85",
         "android_client_info": {
-          "package_name": "com.example.surveys"
+          "package_name": "com.math.surveys"
         }
       },
       "oauth_client": [
@@ -29,6 +29,13 @@
             {
               "client_id": "418904842720-m0ceav3p1flgn1kdbhkjbid6svkiridh.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "418904842720-1f10is2m0fbunjo8mqsom9nj0j4ecpuc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.math.surveys"
+              }
             }
           ]
         }
